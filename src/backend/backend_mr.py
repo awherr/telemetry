@@ -48,8 +48,8 @@ class MRBackend(TelemetryBackend):
         for key, value in message.attrs.items():
             attr[key] = value
         self.collector.collect('OpenVinoEvent', attr)
-
-    def build_event_message(self, event_category: str, event_action: str, event_label: str, event_value: int = 1, **kwargs):
+    
+    def build_event_message(self, event_category: str, event_action: str, event_label: str, event_value: int = 1,  app_name=None, app_version=None, **kwargs):
         data = {'t': 'event', 'ec': event_category, 'ea': event_action, 'el': event_label, 'ev': event_value}
         return Message(MessageType.EVENT, data)
 
